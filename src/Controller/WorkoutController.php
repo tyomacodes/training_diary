@@ -30,19 +30,7 @@ class WorkoutController extends AbstractController
      */
     public function new(Request $request, WorkoutRepository $workoutRepository): Response
     {
-        $workout = new Workout();
-        $form = $this->createForm(WorkoutType::class, $workout);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $workoutRepository->add($workout);
-            return $this->redirectToRoute('app_workout_index', [], Response::HTTP_SEE_OTHER);
-        }
-
-        return $this->renderForm('workout/new.html.twig', [
-            'workout' => $workout,
-            'form' => $form,
-        ]);
+        return $this->render('workout/new.html.twig');
     }
 
     /**

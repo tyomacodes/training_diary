@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace App\Repository;
 
@@ -45,32 +46,12 @@ class ExerciseRepository extends ServiceEntityRepository
         }
     }
 
-    // /**
-    //  * @return Exercise[] Returns an array of Exercise objects
-    //  */
-    /*
-    public function findByExampleField($value)
+    public function allIdsNames(): array
     {
-        return $this->createQueryBuilder('e')
-            ->andWhere('e.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('e.id', 'ASC')
-            ->setMaxResults(10)
+        $qb = $this->createQueryBuilder('e');
+        return $qb
+            ->select('e.id', 'e.name')
             ->getQuery()
-            ->getResult()
-        ;
+            ->getResult();
     }
-    */
-
-    /*
-    public function findOneBySomeField($value): ?Exercise
-    {
-        return $this->createQueryBuilder('e')
-            ->andWhere('e.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
-    }
-    */
 }

@@ -1,0 +1,7 @@
+<select class="form-select" aria-label="Default select example">
+    <option selected>Выбрать упражнение</option>
+    {% for exercise in all %}
+        <li><a class="dropdown-item"></a></li>
+        <option value="{{ exercise['id'] }}">{{ exercise['name'] }}</option>
+    {% endfor %}
+</select>

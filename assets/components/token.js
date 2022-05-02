@@ -1,4 +1,4 @@
-const key = 'talk-auth'
+const key = 'diary-auth'
 
 export function saveToken(token)
 {

@@ -2,10 +2,14 @@
 
 {% block title %}New Workout{% endblock %}
 
+{% block stylesheets_scrypts %}
+    {{ encore_entry_link_tags('create-workout') }}
+    {{ encore_entry_script_tags('create-workout') }}
+{% endblock %}
+
 {% block body %}
     <h1>Create new Workout</h1>
-
-    {{ include('workout/_form.html.twig') }}
-
+    <div id="exercises_blocks"></div>
+    <button id="add_exercise_button" type="button" class="btn btn-secondary">Добавить упражнение</button>
     <a href="{{ path('app_workout_index') }}">back to list</a>
 {% endblock %}
