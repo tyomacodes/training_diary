@@ -27,6 +27,6 @@ class ExerciseController extends AbstractController
         $all = $service->allExercises();
         $view = $this->renderView('/workout/_add_exercise.html.twig', ['all' => $all]);
 
-        return new JsonResponse(['view' => $view]);
+        return new JsonResponse($all);
     }
 }
