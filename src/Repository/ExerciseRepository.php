@@ -51,6 +51,7 @@ class ExerciseRepository extends ServiceEntityRepository
         $qb = $this->createQueryBuilder('e');
         return $qb
             ->select('e.id', 'e.name')
+            ->orderBy('e.name')
             ->getQuery()
             ->getResult();
     }

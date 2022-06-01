@@ -2,27 +2,30 @@
 
 {% block title %}Workout index{% endblock %}
 
-{% block body %}
-    <h1>Workout index</h1>
+{% block stylesheets_scrypts %}
+    {{ encore_entry_link_tags('app') }}
+    {{ encore_entry_script_tags('app') }}
+{% endblock %}
 
+{% block body %}
     <table class="table">
         <thead>
             <tr>
-                <th>Id</th>
-                <th>Duration</th>
                 <th>Date</th>
-                <th>actions</th>
+                <th>Duration</th>
+                <th>Id</th>
+                <th>Actions</th>
             </tr>
         </thead>
         <tbody>
         {% for workout in workouts %}
             <tr>
-                <td>{{ workout.id }}</td>
-                <td>{{ workout.duration }}</td>
                 <td>{{ workout.createdAt.format('Y.m.d') }}</td>
+                <td>{{ workout.duration }}</td>
+                <td>{{ workout.id }}</td>
                 <td>
-                    <a href="{{ path('app_workout_show', {'id': workout.id}) }}">show</a>
-                    <a href="{{ path('app_workout_edit', {'id': workout.id}) }}">edit</a>
+                    <a href="{{ path('/workout/{id}', {'id': workout.id}) }}">show</a>
+                    <a href="{{ path('/workout/{id}/edit', {'id': workout.id}) }}">edit</a>
                 </td>
             </tr>
         {% else %}
@@ -32,6 +35,4 @@
         {% endfor %}
         </tbody>
     </table>
-
-    <a href="{{ path('app_workout_new') }}">Create new</a>
 {% endblock %}

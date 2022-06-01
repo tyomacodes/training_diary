@@ -2,21 +2,21 @@
 
 {% block title %}New Workout{% endblock %}
 
+{% block stylesheets_scrypts1 %}
+    {{ encore_entry_link_tags('navbar') }}
+    {{ encore_entry_script_tags('navbar') }}
+{% endblock %}
 {% block stylesheets_scrypts %}
     {{ encore_entry_link_tags('create-workout') }}
     {{ encore_entry_script_tags('create-workout') }}
 {% endblock %}
 
 {% block body %}
-    <h1>Create new Workout</h1>
     <form id="save_workout_form">
-        <div id="exercises_blocks"></div>
-        <button id="add_exercise_button" type="button" class="btn btn-secondary btn-sm">Добавить упражнение</button>
-        <a href="{{ path('app_workout_index') }}">back to list</a>
-
-        <p>
-        <p>
-        <p>
-        <button id="save_workout_button" class="btn-sm" type="button">Сохранить тренировку</button>
+        <button id="add_exercise_button" type="button" class="btn btn-outline-secondary btn-sm">Добавить упражнение</button>
+        <div id="exercises_blocks">
+            <hr>
+            <button id="save_workout_button" type="button" class="btn btn-outline-success btn-sm">Сохранить тренировку</button>
+        </div>
     </form>
 {% endblock %}
