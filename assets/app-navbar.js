@@ -1,3 +1,3 @@
-import './styles/app.css';
+import './styles/navbar.css';
 import './bootstrap';
 import './components/navbar';

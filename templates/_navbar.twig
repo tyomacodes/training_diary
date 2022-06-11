@@ -1,39 +1,46 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark" id="navbar">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="{{ path('home') }}">Дневник тренировок</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDarkDropdown" aria-controls="navbarNavDarkDropdown" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
-            <ul class="navbar-nav">
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Мои тренировки
-                    </a>
-                    <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
-                        <li><a class="dropdown-item" href="{{ path('app_workout_new') }}">Создать тренировку</a></li>
-                        <li><a class="dropdown-item" href="{{ path('app_workout_index') }}">Все тренировки</a></li>
-                    </ul>
-                </li>
-            </ul>
+<div id="navbar">
+    <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="{{ path('home') }}" >Дневник тренировок</a>
+            <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div id="navbarCollapse" class="collapse navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Мои тренировки</a>
+                        <div class="dropdown-menu dropdown-menu-dark">
+                            <a href="{{ path('app_workout_new') }}" class="dropdown-item">Создать тренировку</a>
+                            <div class="dropdown-divider"></div>
+                            <a href="{{ path('app_workout_index') }}" class="dropdown-item">Все тренировки</a>
+                        </div>
+                    </li>
+                </ul>
+                <ul class="nav navbar-nav">
+                    <li class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Упражнения</a>
+                        <div class="dropdown-menu dropdown-menu-dark">
+                            <a href="{{ path('app_exercise_new') }}" class="dropdown-item">Создать упражнение</a>
+                            <div class="dropdown-divider"></div>
+                            <a href="{{ path('app_exercise_index') }}" class="dropdown-item">Все упражнения</a>
+                        </div>
+                    </li>
+                </ul>
+                {#  <ul class="nav navbar-nav ms-auto">
+                    <li class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Admin</a>
+                        <div class="dropdown-menu dropdown-menu-end">
+                            <a href="#" class="dropdown-item">Reports</a>
+                            <a href="#" class="dropdown-item">Settings</a>
+                            <div class="dropdown-divider"></div>
+                            <a href="#" class="dropdown-item">Logout</a>
+                        </div>
+                    </li>
+                </ul>
+                #}
+            </div>
         </div>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDarkDropdown" aria-controls="navbarNavDarkDropdown" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
-            <ul class="navbar-nav">
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Упражнения
-                    </a>
-                    <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
-                        <li><a class="dropdown-item" href="{{ path('app_exercise_new') }}">Создать упражнение</a></li>
-                        <li><a class="dropdown-item" href="{{ path('app_exercise_index') }}">Все упражнения</a></li>
-                    </ul>
-                </li>
-            </ul>
-        </div>
-    </div>
-</nav>
+    </nav>
+</div>
 
 

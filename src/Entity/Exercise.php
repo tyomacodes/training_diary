@@ -29,6 +29,11 @@ class Exercise
      */
     private $sets;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $Type;
+
     public function __construct()
     {
         $this->sets = new ArrayCollection();
@@ -77,6 +82,18 @@ class Exercise
                 $set->setExercise(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getType(): ?string
+    {
+        return $this->Type;
+    }
+
+    public function setType(string $Type): self
+    {
+        $this->Type = $Type;
 
         return $this;
     }

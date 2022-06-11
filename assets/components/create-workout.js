@@ -36,57 +36,44 @@ function addExerciseBlock(data) {
     }).join()
 
     let html = `
-
     <div id="exercise_blocks_${exerciseCounter}">
         <hr>   
-        <table>
-        <thead>
-            <td>
-                <select id="exercise_select_${exerciseCounter}" name="exercise" class="form-select-sm" aria-label="Default select example" >
+        <div class="input-group">
+            <select id="exercise_select_${exerciseCounter}" name="exercise" class="form-select-sm" aria-label="Default select example">
                 <option selected>Выбрать упражнение</option>
                 ${list}
-                </select>
-            </td>
-            <td>
-                <button id="add_set_button_${exerciseCounter}" data-number="${exerciseCounter}" type="button" class="btn btn-success btn-sm">Добавить подход</button>
-            </td>
-            <td>
-                <button id="del_exercise_button_${exerciseCounter}" type="button" class="btn btn-outline-warning btn-sm">Удалить упражнение</button>
-            </td>
-        </thead>
-        </table>
-        <div id="sets_${exerciseCounter}"></div>  
+            </select>
+            <button disabled="true" id="add_set_button_${exerciseCounter}" data-number="${exerciseCounter}" type="button" class="btn btn-success btn-sm">Добавить подход</button>
+            <button id="del_exercise_button_${exerciseCounter}" type="button" class="btn btn-warning btn-sm">Удалить упражнение</button>
+            <button id="save_exercise_button_${exerciseCounter}" type="button" class="btn btn-success btn-sm">Записать упражнение</button>
+        </div>
+        <div id="sets_${exerciseCounter}">
+            <table class="table">
+                <tbody>              
+                 </tbody>
+            </table>    
+        </div>  
     </div>
     `
 
+    $(`#add_exercise_button`).prop("disabled", true)
     $('#exercises_blocks').append(html)
     $(`#exercise_select_${exerciseCounter}`).change(selectExercise)
     $(`#del_exercise_button_${exerciseCounter}`).click(delExerciseBlock)
-}
-
-function delExerciseBlock(){
-    $(`#exercise_blocks_${exerciseCounter}`).remove()
-    exerciseCounter--
+    $(`#save_exercise_button_${exerciseCounter}`).click(buttonToggler)
 }
 
 function selectExercise()
 {
-    let html = `
-    <table class="table table-active">
-        <thead>
-            <tr>
-                <th>Повторения</th> 
-                <th>Вес</th>
-                <th>Удалить подход</th> 
-            </tr>
-        </thead>
-        <tbody>                
-        </tbody>
-    </table>
-    `
+    $(`#exercise_select_${exerciseCounter}`).prop("disabled", true)
+    $(`#add_set_button_${exerciseCounter}`).prop("disabled", false).click(addSet)
+}
 
-    $(`#sets_${exerciseCounter}`).append(html);
-    $(`#add_set_button_${exerciseCounter}`).click(addSet);
+function delExerciseBlock(){
+    $(`#exercise_blocks_${exerciseCounter}`).remove()
+    $(`#add_exercise_button`).prop("disabled", false)
+    exerciseCounter--
+    setCounter = 0
 }
 
 function addSet() {
@@ -94,10 +81,10 @@ function addSet() {
     let html = `
         <tr id="set_${exerciseCounter}_${setCounter}">
             <td>
-            <input type="text" name="repetitions" required>
+            <input type="text" name="repetitions" placeholder="Повторения">
             </td>      
             <td>
-            <input type="text" name="weight" required>
+            <input type="text" name="weight" placeholder="Вес" required>
             </td>
             <td>
             <button id="del_set_button_${exerciseCounter}_${setCounter}" data-number="${exerciseCounter}_${setCounter}" type="button" class="btn btn-danger btn-sm">Удалить подход</button>
@@ -108,10 +95,16 @@ function addSet() {
     console.log(id)
     $(`${id} tbody`).append(html)
     $(`#del_set_button_${exerciseCounter}_${setCounter}`).click(delSet)
+    //$('input[type="text"]').keyup(buttonToggler);
 }
 
 function delSet()
 {
     $(`#set_${exerciseCounter}_${setCounter}`).remove();
     setCounter--;
+}
+
+function buttonToggler() {
+    $('#save_workout_button').prop('disabled', false);
+    $('#add_exercise_button').prop('disabled', false);
 }

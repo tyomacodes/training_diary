@@ -13,10 +13,10 @@
 
 {% block body %}
     <form id="save_workout_form">
-        <button id="add_exercise_button" type="button" class="btn btn-outline-secondary btn-sm">Добавить упражнение</button>
-        <div id="exercises_blocks">
-            <hr>
-            <button id="save_workout_button" type="button" class="btn btn-outline-success btn-sm">Сохранить тренировку</button>
+        <div class="btn-group btn-group-lg" role="group" aria-label="workout_buttons">
+            <button id="add_exercise_button" type="button" class="btn btn-secondary btn-sm">Добавить упражнение</button>
+            <button disabled="true" id="save_workout_button" type="submit" class="btn btn-success btn-sm">Сохранить тренировку</button>
         </div>
+        <div id="exercises_blocks"></div>
     </form>
 {% endblock %}

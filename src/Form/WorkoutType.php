@@ -16,6 +16,7 @@ class WorkoutType extends AbstractType
         $builder
             ->add('duration')
             ->add('createdAt', DateTimeType::class)
+            //->add('sets')
         ;
     }
 
